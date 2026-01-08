@@ -8,13 +8,17 @@ function App() {
 
   const [lastName, setLastName] = useState("")
 
+  const [submitName, setSubmitName] = useState("")
+
 
 
   const handleSumbit = (event) => {
 
     event.preventDefault();
 
-    alert(`Full Name: ${firstName} ${lastName}`)
+    // alert(`Full Name: ${firstName} ${lastName}`)
+
+    setSubmitName(`${firstName} ${lastName}`)
 
   }
   return (
@@ -36,10 +40,12 @@ function App() {
       </button>
 
       <br></br>
-
-        <label>
-          Full Name: {firstName} {lastName}
+{submitName && (
+    <label >
+          Full Name: {submitName}
         </label>
+)}
+      
     
     </form>
 
