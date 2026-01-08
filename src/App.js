@@ -45,7 +45,7 @@ function App() {
       </button>
 
       <br></br>
-{submitName && (
+{submitted && (
     <label >
           Full Name: {firstName} {lastName}
         </label>
