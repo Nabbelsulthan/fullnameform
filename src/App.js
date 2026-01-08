@@ -8,7 +8,7 @@ function App() {
 
   const [lastName, setLastName] = useState("")
 
- const [submitted, setSubmitted] = useState(false);
+   const [fullName, setFullName] = useState('');
 
 
 
@@ -19,11 +19,11 @@ function App() {
     // alert(`Full Name: ${firstName} ${lastName}`)
 
       if (firstName.trim() === '' || lastName.trim() === '') {
-      setSubmitted(false);
+      setFullName("");
       return;
     }
 
-    setSubmitted(true);
+    setFullName(`${firstName} ${lastName}`);
 
   }
   return (
@@ -40,19 +40,21 @@ function App() {
       <input type='text' id='lname' name='lname' value={lastName} onChange={(event)=> setLastName(event.target.value)} required></input>
       <br></br>
 
-      <button type='submit'>
+      <button >
         submit
       </button>
 
       <br></br>
-{submitted && (
-    <label >
-          Full Name: {firstName} {lastName}
-        </label>
-)}
+
       
     
     </form>
+
+    {fullName && (
+    <label >
+          Full Name: {fullName}
+        </label>
+)}
 
     </div>
   );
