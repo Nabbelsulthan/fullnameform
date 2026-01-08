@@ -1,61 +1,53 @@
-
 import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [fullName, setFullName] = useState('');
 
-  const [firstName, setFirstName] = useState("")
-
-  const [lastName, setLastName] = useState("")
-
-   const [fullName, setFullName] = useState('');
-
-
-
-  const handleSumbit = (event) => {
-
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    // alert(`Full Name: ${firstName} ${lastName}`)
-
-      if (firstName.trim() === '' || lastName.trim() === '') {
-      setFullName("");
+    if (firstName.trim() === '' || lastName.trim() === '') {
+      setFullName('');
       return;
     }
 
     setFullName(`${firstName} ${lastName}`);
+  };
 
-  }
   return (
     <div className="display-name">
+      <h1>Full Name Display</h1>
 
-    <h1>Full Name Display</h1>
-   
-    <form onSubmit={handleSumbit}>
-      <label>First Name:</label>
-      <input type='text' id='fname' name='fname' value={firstName}   onChange={(event) => setFirstName(event.target.value)} required></input>
-      <br></br>
+      <form onSubmit={handleSubmit}>
+        <label>First Name:</label>
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <br />
 
-      <label>Last Name:</label>
-      <input type='text' id='lname' name='lname' value={lastName} onChange={(event)=> setLastName(event.target.value)} required></input>
-      <br></br>
+        <label>Last Name:</label>
+        <input
+          type="text"
+          id="lname"
+          name="lname"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <br />
 
-      <button >
-        submit
-      </button>
+        <button type="submit">Submit</button>
+      </form>
 
-      <br></br>
-
-      
-    
-    </form>
-
-    {fullName && (
-    <label >
-          Full Name: {fullName}
-        </label>
-)}
-
+      {fullName && (
+        <p>Full Name: {fullName}</p>
+      )}
     </div>
   );
 }
