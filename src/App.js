@@ -8,7 +8,7 @@ function App() {
 
   const [lastName, setLastName] = useState("")
 
-  const [submitName, setSubmitName] = useState("")
+ const [submitted, setSubmitted] = useState(false);
 
 
 
@@ -18,7 +18,12 @@ function App() {
 
     // alert(`Full Name: ${firstName} ${lastName}`)
 
-    setSubmitName(`${firstName} ${lastName}`)
+      if (firstName.trim() === '' || lastName.trim() === '') {
+      setSubmitted(false);
+      return;
+    }
+
+    setSubmitted(true);
 
   }
   return (
@@ -42,7 +47,7 @@ function App() {
       <br></br>
 {submitName && (
     <label >
-          Full Name: {submitName}
+          Full Name: {firstName} {lastName}
         </label>
 )}
       
